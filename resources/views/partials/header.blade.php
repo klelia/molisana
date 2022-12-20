@@ -1,0 +1,30 @@
+    <header class="bg-white">
+        <div id="logo" class="text-center">
+            <img src="{{ Vite::asset('resources/img/logo.png') }}" alt="">
+        </div>
+        <div id="main-menu">
+
+            <!-- // facciamo vedere un esempio di come possiamo riciclare lo stesso layout
+            // creando 2/3 paginette diverse random -->
+            <nav class="navbar-nav container navbar-light">
+                <ul class="list-unstyled d-flex justify-content-center gap-2 text-uppercase">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('home')}}">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('products.index')}}">
+                            Prodotti
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            News
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
