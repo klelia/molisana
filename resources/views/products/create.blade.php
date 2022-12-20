@@ -32,7 +32,7 @@
                     <input type="text" class="form-control" id="image" name="image">
                   </div>
                   <button type="submit" class="btn btn-success">Submit</button>
-                  <button type="rest" class="btn btn-primary">Reset</button>
+                  <button type="reset" class="btn btn-primary">Reset</button>
             </form>
         </div>
     </div>

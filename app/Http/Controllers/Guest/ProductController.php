@@ -40,23 +40,26 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $form_data = $request->all();
-        $newproduct = new Product();
-        $newproduct->title = $form_data['title'];
-            $newproduct->description = $form_data['description'];
-            $newproduct->type = $form_data['type'];
-            $newproduct->image = $form_data['image'];
-            $newproduct->cooking_time = $form_data['cooking_time'];
-            $newproduct->weight = $form_data['weight'];
-            $newproduct->save();
-        return redirect()->route('products.show', $newproduct->id);
 
+        $newproduct = new Product();
+
+        $newproduct->title = $form_data['title'];
+        $newproduct->description = $form_data['description'];
+        $newproduct->type = $form_data['type'];
+        $newproduct->image = $form_data['image'];
+        $newproduct->cooking_time = $form_data['cooking_time'];
+        $newproduct->weight = $form_data['weight'];
+
+        $newproduct->save();
+
+        return redirect()->route('products.show', $newproduct->id);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
      */
     public function show(Product $product)
     {
@@ -67,7 +70,7 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
      */
     public function edit($id)
     {
@@ -90,7 +93,7 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @
      */
     public function destroy($id)
     {
