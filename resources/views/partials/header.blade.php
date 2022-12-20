@@ -9,12 +9,12 @@
             <nav class="navbar-nav container navbar-light">
                 <ul class="list-unstyled d-flex justify-content-center gap-2 text-uppercase">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('home')}}">
+                        <a class="nav-link {{Route::currentRouteName() == 'home' ? 'active' : ''}}" href="{{route('home')}}">
                             Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('products.index')}}">
+                        <a class="nav-link {{Route::currentRouteName() == 'products.index' ? 'active' : ''}}" href="{{route('products.index')}}">
                             Prodotti
                         </a>
                     </li>

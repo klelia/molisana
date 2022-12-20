@@ -39,7 +39,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //salavare i dati sul db
+        $form_data = $request->all();
+        $newproduct = new Product();
+        $newproduct->title = $form_data['title'];
+            $newproduct->description = $form_data['description'];
+            $newproduct->type = $form_data['type'];
+            $newproduct->image = $form_data['image'];
+            $newproduct->cooking_time = $form_data['cooking_time'];
+            $newproduct->weight = $form_data['weight'];
+            $newproduct->save();
+        return redirect()->route('products.show', $newproduct->id);
 
     }
 
@@ -49,9 +58,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        return view('products.show');
+        return view('products.show', compact('product'));
     }
 
     /**
