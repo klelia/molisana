@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Guest\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\ProductController as ProductController;
+use App\Http\Controllers\Guest\RecipeController as RecipeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +16,11 @@ use App\Http\Controllers\Guest\ProductController as ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::resource('products', ProductController::class);
+
+Route::resource('recipes', RecipeController::class);
 
 
 
