@@ -19,8 +19,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            News
+                        <a class="nav-link {{Route::currentRouteName() == 'products.create' ? 'active' : ''}}"  href="{{route('products.create')}}">
+                            Inserisci prodotto
                         </a>
                     </li>
                 </ul>

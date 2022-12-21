@@ -7,7 +7,7 @@
             <img src="{{$product->image}}" class="img-fluid" alt="{{$product->title}}">
         </div>
         <div class="col-12 col-md-8">
-            <p>{{$product->description}}</p>
+            <p>{!!$product->description!!}</p>
             <div>
                 Tipo: {{$product->type}}
             </div>
