@@ -11,11 +11,11 @@
                   <h5 class="card-title">{{$product->title}}</h5>
                   <p class="card-text">{{Str::limit($product->description,80)}}</p>
                   <a href="{{route('products.show', $product->id)}}" class="btn btn-primary">Scopri!</a>
-                  <a href="{{route('products.edit', $product->id)}}" class="btn btn-primary ms-3">Modifica</a>
+                  <a href="{{route('products.edit', $product->id )}}" class="btn btn-primary ms-3">Modifica</a>
                   <form action="{{route('products.destroy', $product->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger ms-3">Cancella</button>
+                    <button type="submit" class="delete-button btn btn-danger ms-3" data-item-title="{{$product->title}}">Cancella</button>
                  </form>
 
                 </div>
@@ -26,4 +26,5 @@
     </div>
   </section>
 
+ @include('partials.modal_delete')
 @endsection
