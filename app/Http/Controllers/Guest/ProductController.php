@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -39,8 +39,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // $request->validate([
+        //     'title' => 'required|min:5|max:50',
+        //     'type' => 'required|max:20',
+        //     'image' => 'required|max:250',
+        //     'cooking_time' => 'required|max:20',
+        //     'weight' => 'required|max:20',
+        // ]);
 
-        $form_data = $request->all();
+        $form_data = $this->validation($request->all());
+        //$form_data = $request->all();
 
 
         //$newproduct = new Product();
@@ -98,8 +106,8 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        $form_data = $request->all();
-
+        //$form_data = $request->all();
+        $form_data = $this->validation($request->all());
         $product->title = $form_data['title'];
         $product->description = $form_data['description'];
         $product->type = $form_data['type'];
@@ -121,6 +129,30 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('message', "Il tuo prodottocon id:  {$product->id}  è stato  cancellato con successo !");
+    }
+
+    private function validation($data)
+    {
+        $validator = Validator::make($data, [
+            'title' => 'required|min:5|max:50',
+            'type' => 'required|max:20',
+            'image' => 'required|max:250',
+            'cooking_time' => 'required|max:20',
+            'weight' => 'required|max:20',
+        ], [
+            'title.required' => 'Il titolo è obbligatorio.',
+            'title.min' => 'Il titolo deve essere lungo almeno :min caratteri.',
+            'title.max' => 'Il titolo non può superare i :max caratteri.',
+            'type.required' => 'Il tipo è obbligatorio.',
+            'type.max' => 'Il tipo non può superare i :max caratteri.',
+            'cooking_time.required' => 'Il tempo cottura è obbligatorio.',
+            'cooking_time.max' => 'Il tempo cottura non può superare i :max caratteri.',
+            'weight.required' => 'Il peso è obbligatorio.',
+            'weight.max' => 'Il peso non può superare i :max caratteri.',
+        ])->validate();
+
+        return $validator;
     }
 }
+
