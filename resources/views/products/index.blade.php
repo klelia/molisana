@@ -1,6 +1,21 @@
 @extends('layouts.app')
 @section('content')
   <section class="container mt-4" id="products">
+    @if(session()->has('message'))
+    <div class="alert alert-success mb-3 mt-3">
+        {{ session()->get('message') }}
+    </div>
+    @endif
+    <div>
+       <form action="{{route('products.index')}}" method="GET">
+        <select name="search" id="search">
+            <option value="lunga">Lunghe</option>
+            <option value="corta">Corte</option>
+            <option value="cortissima">Cortissime</option>
+        </select>
+        <button type="submit" class="btn btn-danger ms-3">Cerca</button>
+       </form>
+    </div>
     <h1 class="text-center">Prodotti</h1>
     <div class="row">
         @foreach ($products as $product)
